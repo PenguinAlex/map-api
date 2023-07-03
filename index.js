@@ -3,12 +3,12 @@ const path = require('path');
 const sharp = require('sharp');
 const fs = require('fs');
 
-const app = express();
+const index = express();
 const tilesDirectory = path.join(__dirname, 'tiles'); // Путь к папке с тайлами
 
-app.use(express.static(tilesDirectory)); // Делаем папку с тайлами доступной как статическое содержимое
+index.use(express.static(tilesDirectory)); // Делаем папку с тайлами доступной как статическое содержимое
 
-app.get('/tiles/:zoom/:x/:y', (req, res) => {
+index.get('/tiles/:zoom/:x/:y', (req, res) => {
     const { zoom, x, y } = req.params;
     const tilePath = path.join(tilesDirectory, zoom, x, `${y}.png`); // Путь к запрошенному тайлу
 
@@ -56,7 +56,7 @@ const imagePath = 'map.png';
 splitImageIntoTiles(imagePath)
     .then(() => {
         const port = 8000;
-        app.listen(port, () => {
+        index.listen(port, () => {
             console.log(`Сервер запущен на порту ${port}`);
         });
     })
