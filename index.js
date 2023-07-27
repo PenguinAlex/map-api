@@ -19,7 +19,7 @@ index.get('/tiles/:zoom/:x/:y', (req, res) => {
 async function splitImageIntoTiles() {
     const pythonScriptPath = 'main.py';
 
-    exec(`python ${pythonScriptPath}`, (error, stdout, stderr) => {
+    exec(`pip ${pythonScriptPath}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Ошибка при выполнении Python-скрипта: ${error.message}`);
             return;
