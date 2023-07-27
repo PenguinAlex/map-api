@@ -26,4 +26,4 @@ def split_into_tiles(path, zoom_level):
 
 PIL.Image.MAX_IMAGE_PIXELS = 1173741824
 for i in range(0, 7):
-    split_into_tiles("C:\map.png", i)
+    split_into_tiles("./map.png", i)
